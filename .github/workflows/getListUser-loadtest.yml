@@ -1,4 +1,4 @@
-name: k6 run getListUser-loadtest
+k6 run getListUser-loadtest :
 on: [push, pull_request]
 jobs:
   build:
