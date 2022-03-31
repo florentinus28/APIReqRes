@@ -13,5 +13,5 @@ jobs:
         with:
           filename: getListUser-loadtest.js
 #           flags: --vus 1 --duration 1s
-          cloud: true
-          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+#           cloud: true
+#           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
