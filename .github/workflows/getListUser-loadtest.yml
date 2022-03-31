@@ -1,7 +1,7 @@
-k6 run getListUser-loadtest :
+name : k6 run getListUser-loadtest
 on: [push, pull_request]
 jobs:
-  build:
+  getListUser-loadtest:
     name: Run k6 test
     runs-on: ubuntu-latest
     steps:
