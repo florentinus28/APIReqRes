@@ -1,7 +1,7 @@
 name : k6 run getListUser-loadtest
 on: [push, pull_request]
 jobs:
-  getListUser-loadtest:
+  build:
     name: Run k6 test
     runs-on: ubuntu-latest
     steps:
@@ -9,9 +9,9 @@ jobs:
         uses: actions/checkout@v2
         
       - name: get List User
-        uses: grafana/k6-action@v0.2.0
+        uses: k6io/action@v0.1
         with:
           filename: getListUser-loadtest.js
 #           flags: --vus 1 --duration 1s
-#           cloud: true
-#           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
