@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: get Posts Detail
+      - name: get List User
         uses: grafana/k6-action@v0.2.0
         with:
           filename: getListUser-loadtest.js
