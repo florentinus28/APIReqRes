@@ -34,6 +34,7 @@ export function getListUser(pages){
         'last_name is not empty' : (r) => r.json()['data'][0]['email'] !== null,
         'avatar is not empty' : (r) => r.json()['data'][0]['email'] !== null,
         // Validation Check
-        'Validation Check : url content is https://reqres.in/#support-heading' : (r) => r.json()['support']['url']==='https://reqres.in/#support-heading'
+        'verify body text' : (r) => r.body.includes('https://reqres.in/#support-heading'),
+        'check length data' : (r) => r.json().data.length === r.json().per_page
     });
 }
