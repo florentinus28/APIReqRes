@@ -11,7 +11,7 @@ jobs:
       - name: get Posts Detail
         uses: grafana/k6-action@v0.2.0
         with:
-          filename: TC-getPostsDetail.js
+          filename: getListUser-loadtest.js
 #           flags: --vus 1 --duration 1s
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
