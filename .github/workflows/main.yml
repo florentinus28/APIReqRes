@@ -1,0 +1,37 @@
+name : k6 run getListUser-loadtest
+on: [push, pull_request]
+jobs:
+  build:
+    name: Run k6 test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Login Validation Testing
+        uses: k6io/action@v0.1
+        with:
+          filename: login-validationTest.js
+#           flags: --vus 1 --duration 1s
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+        
+      - name: Login Load testing
+        uses: k6io/action@v0.1
+        with:
+          filename: login-loadTest.js
+#           flags: --vus 1 --duration 1s
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+
+      - name: List User Load Testing
+        uses: k6io/action@v0.1
+        with:
+          filename: getListUser-loadtest.js
+#           flags: --vus 1 --duration 1s
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+      
+
+          
+      
