@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
       
       - name: Login
-        uses: k6io/action@v0.2
+        uses: k6io/action@v0.1
         with:
           filename: login-loadTest.js
 #           flags: --vus 1 --duration 1s
