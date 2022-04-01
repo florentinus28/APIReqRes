@@ -158,7 +158,6 @@ export default function main () {
         })
     })
 }
-let testTime=date.now()
 export function handleSummary(data) {
     return {
       'testResult.html': htmlReport(data),
