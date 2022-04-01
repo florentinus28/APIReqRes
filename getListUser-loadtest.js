@@ -2,14 +2,14 @@ import { check,group } from 'k6';
 import http from 'k6/http';
 import { getListUser } from './Test function/getListUser.js';
 
-// export const options = {
-//     vus: 10,
-//     duration: '10s',
-//     thresholds: {
-//       http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-//       http_req_duration: ['p(95)<500'], // 95% of requests should be below 200ms
-//     },
-// };
+export const options = {
+    vus: 10,
+    duration: '5s',
+    thresholds: {
+      http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+      http_req_duration: ['p(95)<500'], // 95% of requests should be below 200ms
+    },
+};
 
 export default function main () {
     let response;
