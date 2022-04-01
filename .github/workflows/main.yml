@@ -7,8 +7,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Login Validation Testing
+        uses: k6io/action@v0.1
+        with:
+          filename: login-validationTest.js
+#           flags: --vus 1 --duration 1s
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
         
-      - name: get List User
+      - name: Login Load testing
+        uses: k6io/action@v0.1
+        with:
+          filename: login-loadTest.js
+#           flags: --vus 1 --duration 1s
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+
+      - name: List User Load Testing
         uses: k6io/action@v0.1
         with:
           filename: getListUser-loadtest.js
@@ -16,10 +32,6 @@ jobs:
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
       
-      - name: Login
-        uses: k6io/action@v0.1
-        with:
-          filename: login-loadTest.js
-#           flags: --vus 1 --duration 1s
-          cloud: true
-          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+
+          
+      
