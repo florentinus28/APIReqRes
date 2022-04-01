@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: get List User
+      - name: Login
         uses: k6io/action@v0.1
         with:
           filename: login-validationTest.js
