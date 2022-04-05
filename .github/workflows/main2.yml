@@ -31,8 +31,8 @@ jobs:
         with:
           filename: login-validationTest.js
       
-      - name: Store performance test results
+      - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: k6-summary-report
-          path: summary.json
+          name: code-coverage-report
+          path: output/test/code-coverage.html
