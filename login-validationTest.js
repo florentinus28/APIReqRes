@@ -160,6 +160,7 @@ export default function main () {
     })
 }
 export function handleSummary(data) {
+        console.log('Finished executing performance tests');
     return {
       "summary.html": htmlReport(data),
     };
