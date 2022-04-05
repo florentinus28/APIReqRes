@@ -1,6 +1,7 @@
 import { check,group } from 'k6';
 import http from "k6/http";
-import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
+// import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
+import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 import { login } from './Test function/login.js';
 
 export default function main () {
@@ -158,8 +159,16 @@ export default function main () {
         })
     })
 }
+// export function handleSummary(data) {
+//     return {
+//       'testResult.html': htmlReport(data),
+//     };
+//   }
 export function handleSummary(data) {
+    console.log('Finished executing performance tests');
+  
     return {
-      'testResult.html': htmlReport(data),
+      'stdout': textSummary(data, { indent: ' ', enableColors: true }), // Show the text summary to stdout...
+      'summary.json': JSON.stringify(data), // and a JSON with all the details...
     };
   }
