@@ -161,7 +161,7 @@ export default function main () {
 }
 export function handleSummary(data) {
     return {
-      'testResult.html': htmlReport(data),
+      "summary.html": htmlReport(data),
     };
   }
 // export function handleSummary(data) {
