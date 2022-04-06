@@ -1,5 +1,6 @@
 import { check,group } from 'k6';
 import http from 'k6/http';
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 import { getListUser } from './Test function/getListUser.js';
 
 export const options = {
@@ -61,4 +62,10 @@ export default function main () {
             }
         }
     })
+}
+export function handleSummary(data) {
+    console.log('Finished executing performance tests');
+return {
+  "summary.html": htmlReport(data),
+};
 }

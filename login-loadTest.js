@@ -1,5 +1,6 @@
 import { check,group } from 'k6';
 import http from "k6/http";
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 import { login } from './Test function/login.js';
 
 export const options = {
@@ -38,4 +39,10 @@ export default function main () {
             'Check Data Length : Length data of Token is 17 char' : (r) => r.json()['token'].length === 17
         })
     })
+}
+export function handleSummary(data) {
+    console.log('Finished executing performance tests');
+return {
+  "summary.html": htmlReport(data),
+};
 }
