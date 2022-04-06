@@ -28,11 +28,16 @@ jobs:
         
      # Runs a single command using the runners shell
       - name: Run k6 test
-        uses: grafana/k6-action@v0.2.0
+        uses: k6io/action@v0.1
         with:
-          filename: login-loadTest.js
-      - name: Upload performance test results
-        uses: actions/upload-artifact@v3
+          filename: login-validationTest.js
+          
+      - name: Upload html report for job
+        uses: actions/upload-artifact@v2
         with:
-          name: k6-report
-          path: results.json
+          #html file name define in k6 code
+          name: summary  
+          # path in our github repo
+          path: summary.html  
+          # available time period file after that is automatically remove from the workspace 
+          retention-days: 2  
