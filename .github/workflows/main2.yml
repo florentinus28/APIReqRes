@@ -41,17 +41,3 @@ jobs:
           path: loginSummary.html
           # available time period file after that is automatically remove from the workspace 
 #           retention-days: 2 
-
-      - name: Run k6 list user test
-        uses: k6io/action@v0.1
-        with:
-          filename: getListUser-loadtest.js
-      - name: Upload html report for job
-        uses: actions/upload-artifact@v2
-        with:
-          #html file name define in k6 code
-          name: listUserSummary  
-          # path in our github repo
-          path: listUserSummary.html  
-          # available time period file after that is automatically remove from the workspace 
-#           retention-days: 2 
