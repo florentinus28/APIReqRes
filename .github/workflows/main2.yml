@@ -30,7 +30,7 @@ jobs:
       - name: Run k6 test
         uses: grafana/k6-action@v0.2.0
         with:
-          filename: login-validationTest.js
+          filename: login-loadTest.js
       - name: Upload performance test results
         uses: actions/upload-artifact@v3
         with:
