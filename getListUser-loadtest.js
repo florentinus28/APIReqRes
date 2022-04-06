@@ -66,6 +66,6 @@ export default function main () {
 export function handleSummary(data) {
     console.log('Finished executing performance tests');
 return {
-  "loginSummary.html": htmlReport(data),
+  "listUserSummary.html": htmlReport(data),
 };
 }
