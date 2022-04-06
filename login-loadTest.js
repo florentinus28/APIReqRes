@@ -42,6 +42,6 @@ export default function main () {
 }
 export function handleSummary(data) {
 return {
-  "summary.html": htmlReport(data),
+  "loginLoadTestSummary.html": htmlReport(data),
 };
 }
