@@ -27,11 +27,16 @@ jobs:
         uses: actions/checkout@v3
         
      # Runs a single command using the runners shell
-      - name: Run k6 test
+      - name: Run k6 login test
         uses: k6io/action@v0.1
         with:
-          filename: login-validationTest.js
-          
+          filename: login-loadTest.js
+        
+      - name: Run k6 list user test
+        uses: k6io/action@v0.1
+        with:
+          filename: getListUser-loadtest.js
+        
       - name: Upload html report for job
         uses: actions/upload-artifact@v2
         with:
