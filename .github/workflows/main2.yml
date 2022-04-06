@@ -38,7 +38,7 @@ jobs:
           #html file name define in k6 code
           name: summary  
           # path in our github repo
-          path: loginLoadTestSummary.html  
+          path: summary.html 
           # available time period file after that is automatically remove from the workspace 
 #           retention-days: 2 
 
@@ -52,6 +52,6 @@ jobs:
           #html file name define in k6 code
           name: summary  
           # path in our github repo
-          path: listUserLoadTestSummary.html  
+          path: summary.html  
           # available time period file after that is automatically remove from the workspace 
 #           retention-days: 2 
