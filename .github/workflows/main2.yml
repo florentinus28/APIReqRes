@@ -36,8 +36,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           #html file name define in k6 code
-          name: summary  
+          name:loginLoadTestSummary
           # path in our github repo
-          path: summary.html
+          path: loginLoadTestSummary.html
           # available time period file after that is automatically remove from the workspace 
-#           retention-days: 2 
+          retention-days: 2 
