@@ -44,11 +44,12 @@ export default function main () {
         response = http.post(reqUrl,reqBody,reqHeader)
         // console.log(response.body)
         check(response,{
-            'Check Response : Login status is 200': (r) => r.status === 200,
-            'Check Data : Token is not empty' : (r) => r.json()['token'] !== null,
-            'Check Data : Error is undefined' : (r) => r.json()['error'] === undefined || errMsg === null || errMsg === '',
-            'Check Data Type : Token is String' : (r) => typeof r.json()['token'] === 'string',
-            'Check Data Length : Length data of Token is 17 char' : (r) => r.json()['token'].length === 17
+            'Check Response : Login status is 400': (r) => r.status === 400,
+            'Check Data : Token is undefined' : (r) => r.json()['token'] === undefined,
+            'Check Data : Error is not empty' : (r) => r.json()['error'] !== undefined,
+            // 'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
+            // 'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
+            'Check error message : The error message is : Missing password' : (r) => r.json()['error']==='Missing password'
         })
     })
 
@@ -95,7 +96,7 @@ export default function main () {
         })
     })
 
-    group ("Login without password", function(){
+    group ("Login when password is empty string", function(){
         const email = 'eve.holt@reqres.in';
         const password = '';
 
@@ -116,7 +117,49 @@ export default function main () {
         })
     })
 
-    group ("Login without user name", function(){
+    group ("Login when password is null", function(){
+        const email = 'eve.holt@reqres.in';
+        const password = null;
+
+        let logindata = login(email,password);
+        reqUrl=logindata.reqUrl;
+        reqBody=logindata.reqBody;
+        reqHeader=logindata.reqHeader;
+        
+        response = http.post(reqUrl,reqBody,reqHeader)
+        console.log(response.body)
+        check(response,{
+            'Check Response : Login status is 400': (r) => r.status === 400,
+            'Check Data : Token is undefined' : (r) => r.json()['token'] === undefined,
+            'Check Data : Error is not empty' : (r) => r.json()['error'] !== null,
+            'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
+            // 'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
+            'Check error message : The error message is : Missing password' : (r) => r.json()['error']==='Missing password'
+        })
+    })
+
+    group ("Login when password is undefined", function(){
+        const email = 'eve.holt@reqres.in';
+        const password = undefined;
+
+        let logindata = login(email,password);
+        reqUrl=logindata.reqUrl;
+        reqBody=logindata.reqBody;
+        reqHeader=logindata.reqHeader;
+        
+        response = http.post(reqUrl,reqBody,reqHeader)
+        // console.log(response.body)
+        check(response,{
+            'Check Response : Login status is 400': (r) => r.status === 400,
+            'Check Data : Token is undefined' : (r) => r.json()['token'] === undefined,
+            'Check Data : Error is not empty' : (r) => r.json()['error'] !== null,
+            'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
+            // 'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
+            'Check error message : The error message is : Missing password' : (r) => r.json()['error']==='Missing password'
+        })
+    })
+
+    group ("Login when user name is empty string", function(){
         const email = '';
         const password = 'cityslicka';
 
@@ -137,7 +180,49 @@ export default function main () {
         })
     })
 
-    group ("Login without email & password", function(){
+    group ("Login when user name is null", function(){
+        const email = null;
+        const password = 'cityslicka';
+
+        let logindata = login(email,password);
+        reqUrl=logindata.reqUrl;
+        reqBody=logindata.reqBody;
+        reqHeader=logindata.reqHeader;
+        
+        response = http.post(reqUrl,reqBody,reqHeader)
+        // console.log(response.body)
+        check(response,{
+            'Check Response : Login status is 400': (r) => r.status === 400,
+            'Check Data : Token is undefined' : (r) => r.json()['token'] === undefined,
+            'Check Data : Error is not empty' : (r) => r.json()['error'] !== null,
+            'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
+            'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
+            'Check error message : The error message is : user not found' : (r) => r.json()['error']==='user not found'
+        })
+    })
+
+    group ("Login when user name is undefined", function(){
+        const email = undefined;
+        const password = 'cityslicka';
+
+        let logindata = login(email,password);
+        reqUrl=logindata.reqUrl;
+        reqBody=logindata.reqBody;
+        reqHeader=logindata.reqHeader;
+        
+        response = http.post(reqUrl,reqBody,reqHeader)
+        // console.log(response.body)
+        check(response,{
+            'Check Response : Login status is 400': (r) => r.status === 400,
+            'Check Data : Token is undefined' : (r) => r.json()['token'] === undefined,
+            'Check Data : Error is not empty' : (r) => r.json()['error'] !== null,
+            'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
+            'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
+            'Check error message : The error message is : user not found' : (r) => r.json()['error']==='user not found'
+        })
+    })
+
+    group ("Login when email and password is empty string", function(){
         const email = '';
         const password = '';
 
@@ -155,6 +240,48 @@ export default function main () {
             'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
             'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
             'Check error message : The error message is : Missing email or username' : (r) => r.json()['error']==='Missing email or username'
+        })
+    })
+
+    group ("Login when email and password is null", function(){
+        const email = null;
+        const password = null;
+
+        let logindata = login(email,password);
+        reqUrl=logindata.reqUrl;
+        reqBody=logindata.reqBody;
+        reqHeader=logindata.reqHeader;
+        
+        response = http.post(reqUrl,reqBody,reqHeader)
+        // console.log(response.body)
+        check(response,{
+            'Check Response : Login status is 400': (r) => r.status === 400,
+            'Check Data : Token is undefined' : (r) => r.json()['token'] === undefined,
+            'Check Data : Error is not empty' : (r) => r.json()['error'] !== null,
+            'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
+            'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
+            'Check error message : The error message is : user not found' : (r) => r.json()['error']==='user not found'
+        })
+    })
+
+    group ("Login when email and password is undefined", function(){
+        const email = undefined;
+        const password = undefined;
+
+        let logindata = login(email,password);
+        reqUrl=logindata.reqUrl;
+        reqBody=logindata.reqBody;
+        reqHeader=logindata.reqHeader;
+        
+        response = http.post(reqUrl,reqBody,reqHeader)
+        // console.log(response.body)
+        check(response,{
+            'Check Response : Login status is 400': (r) => r.status === 400,
+            'Check Data : Token is undefined' : (r) => r.json()['token'] === undefined,
+            'Check Data : Error is not empty' : (r) => r.json()['error'] !== null,
+            'Check Data Type : Error is String' : (r) => typeof r.json()['error'] === 'string',
+            'Check Data Length : Length data of Error is less than equal 100 char' : (r) => r.json()['error'].length <= 100,
+            'Check error message : The error message is : user not found' : (r) => r.json()['error']==='user not found'
         })
     })
 }
