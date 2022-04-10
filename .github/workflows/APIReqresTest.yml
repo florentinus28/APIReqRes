@@ -40,7 +40,7 @@ jobs:
           # path in our github repo
           path: loginValidationTestSummary.html
           # available time period file after that is automatically remove from the workspace 
-          retention-days: 2 
+          retention-days: 7
           
   login_load_test:
     # The type of runner that the job will run on
@@ -66,7 +66,7 @@ jobs:
           # path in our github repo
           path: loginLoadTestSummary.html
           # available time period file after that is automatically remove from the workspace 
-          retention-days: 2 
+          retention-days: 7 
           
   list_user_load_test:
     # The type of runner that the job will run on
@@ -92,7 +92,7 @@ jobs:
           # path in our github repo
           path: listUserLoadTestSummary.html
           # available time period file after that is automatically remove from the workspace 
-          retention-days: 2
+          retention-days: 7
           
   create_user_validation_test:
     # The type of runner that the job will run on
@@ -118,4 +118,4 @@ jobs:
           # path in our github repo
           path: createUserValidationTestSummary.html
           # available time period file after that is automatically remove from the workspace 
-          retention-days: 2
+          retention-days: 7
