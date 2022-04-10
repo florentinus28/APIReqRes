@@ -93,3 +93,29 @@ jobs:
           path: listUserLoadTestSummary.html
           # available time period file after that is automatically remove from the workspace 
           retention-days: 2
+          
+  create_user_validation_test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+     # Runs a single command using the runners shell
+      - name: Run local k6 test
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: createUser-validationTest.js
+        
+      - name: Upload html report for job
+        uses: actions/upload-artifact@v2
+        with:
+          #html file name define in k6 code
+          name: createUserValidationTestSummary
+          # path in our github repo
+          path: createUserValidationTestSummary.html
+          # available time period file after that is automatically remove from the workspace 
+          retention-days: 2
